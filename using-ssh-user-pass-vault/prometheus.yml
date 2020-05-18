@@ -1,0 +1,9 @@
+global:
+ scrape_interval:     10s
+ evaluation_interval: 10s
+scrape_configs:
+  - job_name: Test
+    static_configs:
+    - targets: ['192.168.25.128:9100']
+    - targets: ['192.168.25.26:9100']
+    - targets: ['192.168.25.94:9100']

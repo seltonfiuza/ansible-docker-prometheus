@@ -1,0 +1,25 @@
+- hosts: all
+  gather_facts: no
+  become: true
+  pre_tasks:
+  - name: 'Update packages'
+    raw: 'apt-get update'
+  - name: 'Installing curl'
+    raw: 'apt install curl -y'
+  - name: 'Installing Docker'
+    raw: 'curl -fsSL https://get.docker.io | bash -'
+  tasks:
+  - name: 'Deploying Docker Node Exporter'
+    raw: 'docker run -p 9100:9100 -d quay.io/prometheus/node-exporter'
+
+- hosts: prometheus-server
+  user: ubuntu
+  gather_facts: no
+  become: true
+  tasks:
+  - name: 'Copy prometheus.yml to server'
+    copy:
+      src: './prometheus.yml'
+      dest: '~/prometheus.yml'
+  - name: 'Deploying Prometheus Server'
+    raw: 'docker run -p 9090:9090 -v ~/prometheus.yml:/etc/prometheus/prometheus.yml -d prom/prometheus'

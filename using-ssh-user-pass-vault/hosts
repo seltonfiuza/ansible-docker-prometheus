@@ -1,0 +1,14 @@
+[all:vars]
+ansible_connection=ssh
+ansible_user=osboxes
+ansible_ssh_pass='{{ ssh_pass }}'
+ansible_become_method=sudo
+ansible_become_pass='{{ my_cluser_sudo_pass }}'
+
+[prometheus-server]
+192.168.25.128
+
+[node-exporter-vm]
+192.168.25.128
+192.168.25.26
+192.168.25.94

@@ -1,0 +1,13 @@
+[all:vars]
+ansible_connection=ssh
+ansible_user=osboxes
+ansible_ssh_pass=osboxes.org
+ansible_sudo_pass=osboxes.org
+
+[prometheus-server]
+192.168.25.128
+
+[node-exporter-vm]
+192.168.25.128
+192.168.25.26
+192.168.25.94

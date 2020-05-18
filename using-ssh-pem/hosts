@@ -1,0 +1,6 @@
+[prometheus-server]
+<ip-server> ansible_user=ubuntu
+
+[node-exporter-ec2]
+<ip-server> ansible_user=ubuntu ansible_ssh_private_key_file=<path .pem file>
+<ip-node> ansible_user=ubuntu ansible_ssh_private_key_file=<path .pem file>
